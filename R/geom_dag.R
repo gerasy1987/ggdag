@@ -320,7 +320,7 @@ filter_direction <- function(.direction) {
 #'   produce a data frame. See fortify() for which variables will be created. A
 #'   function will be called with a single argument, the plot data. The return
 #'   value must be a data.frame., and will be used as the layer data.
-#' @param curvature The bend of the curve. 1 approximates a halfcircle while 0
+#' @param strength The bend of the curve. 1 approximates a halfcircle while 0
 #'   will give a straight line. Negative number will change the direction of the
 #'   curve. Only used if layout circular = FALSE.
 #' @param arrow_directed,arrow_bidirected specification for arrow heads, as
@@ -385,7 +385,7 @@ filter_direction <- function(.direction) {
 geom_dag_edges <- function(mapping = NULL,
                            data_directed = filter_direction("->"),
                            data_bidirected = filter_direction("<->"),
-                           curvature = 0.3,
+                           strength = 0.3,
                            arrow_directed = grid::arrow(length = grid::unit(5, "pt"), type = "closed"),
                            arrow_bidirected = grid::arrow(length = grid::unit(5, "pt"), ends = "both", type = "closed"),
                            position = "identity", na.rm = TRUE, show.legend = NA, inherit.aes = TRUE, fold = FALSE,
@@ -396,7 +396,7 @@ geom_dag_edges <- function(mapping = NULL,
                            show.legend = show.legend, inherit.aes = inherit.aes,
                            ...),
     geom_dag_edges_arc(mapping, data = data_bidirected, arrow = arrow_bidirected,
-                          curvature = curvature, position = position,
+                          strength = strength, position = position,
                           na.rm = na.rm, show.legend = show.legend,
                           inherit.aes = inherit.aes, fold = fold,
                           ...)
@@ -416,7 +416,7 @@ geom_dag_edges <- function(mapping = NULL,
 #'   produce a data frame. See fortify() for which variables will be created. A
 #'   function will be called with a single argument, the plot data. The return
 #'   value must be a data.frame., and will be used as the layer data.
-#' @param curvature The bend of the curve. 1 approximates a halfcircle while 0
+#' @param strength The bend of the curve. 1 approximates a halfcircle while 0
 #'   will give a straight line. Negative number will change the direction of the
 #'   curve. Only used if layout circular = FALSE.
 #' @param arrow specification for arrow heads, as created by arrow()
@@ -502,7 +502,7 @@ geom_dag_edges_link <- function(mapping = NULL, data = NULL,
 
 #' @rdname geom_dag_edge_functions
 #' @export
-geom_dag_edges_arc <- function(mapping = NULL, data = NULL, curvature = .5,
+geom_dag_edges_arc <- function(mapping = NULL, data = NULL, strength = .5,
                                 arrow = grid::arrow(length = grid::unit(5, "pt"), type = "closed"),
                                 position = "identity", na.rm = TRUE, show.legend = NA,
                                 inherit.aes = TRUE, fold = FALSE,
@@ -525,7 +525,7 @@ geom_dag_edges_arc <- function(mapping = NULL, data = NULL, curvature = .5,
                  stat = StatEdgeArc,
                  check.aes = FALSE,
                  position = position, show.legend = show.legend, inherit.aes = inherit.aes,
-                 params = list(arrow = arrow, curvature = curvature,
+                 params = list(arrow = arrow, strength = strength,
                                interpolate = FALSE, fold = fold, na.rm = na.rm,
                                n = n, lineend = lineend,
                                linejoin = linejoin, linemitre = linemitre,
@@ -629,7 +629,7 @@ geom_dag_collider_edges <- function(mapping = NULL, data = NULL,
                                     stat = "identity", position = "identity",
                                     ...,
                                     size = .6,
-                                    curvature = 0.5,
+                                    strength = 0.5,
                                     angle = 90,
                                     ncp = 5,
                                     arrow = NULL,
@@ -653,7 +653,7 @@ geom_dag_collider_edges <- function(mapping = NULL, data = NULL,
     params = list(
       size = size,
       arrow = arrow,
-      curvature = curvature,
+      strength = strength,
       angle = angle,
       ncp = ncp,
       lineend = lineend,
